@@ -4,18 +4,23 @@ Running state. Update as things move.
 
 ## Done
 - [x] Repo initialized, thesis captured in `docs/`
+- [x] Crawl policy decided and documented (`docs/crawl-policy.md`)
+- [x] Async crawler: inventory HTML pages + documents (URL, sha256, bytes, Last-Modified)
+- [x] PDF triage: StructTreeRoot, text layer, images, table regions, form fields, linearized, lang, title
+- [x] Complexity routing (easy / moderate / hard / decline) and document-type classification
+- [x] Audit report generator (markdown + JSON), with market-rate range and deadline
+- [x] SQLite inventory store; `adascan` CLI (crawl / triage / report / runs)
+- [x] Integration tests against a local fixture site — 28 passing
 
 ## In progress
 - _nothing yet_
 
-## Next — Week 1 (scanner)
-- [ ] Decide crawl policy: rate limits, robots.txt, user-agent identification, backoff
-- [ ] Async crawler: inventory HTML pages + PDF links (URL, content hash, bytes, Last-Modified)
-- [ ] axe-core via Playwright on HTML pages
-- [ ] PDF triage checks (StructTreeRoot present? text layer? page/image/table counts? form fields? linearized?)
-- [ ] Audit report generator: doc count, fail count, severity breakdown, market-rate cost, deadline
+## Next — Week 1 remainder (scanner)
+- [ ] axe-core via Playwright on HTML pages — the WCAG side is not built yet
 - [ ] Enumerate Colorado special districts from the state website registry — verify it's machine-readable
 - [ ] Run on 20 Colorado special districts
+- [ ] Batch runner: take a seed list, crawl N domains, emit a ranked prospect table
+- [ ] Decide retention/deletion policy for downloaded documents before any bulk run
 
 ## Next — Week 2 (eval harness, no remediation code)
 - [ ] Assemble 300–500 real government PDFs, stratified by type and complexity
