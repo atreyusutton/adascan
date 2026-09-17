@@ -63,3 +63,22 @@ decides whether this is an 80%-margin software business or a staffing agency.
 4. **Never ask a model to do something `pikepdf` can do exactly.** Deterministic tools
    for structure and validation; models only for judgment.
 5. **No claim ships to a customer that isn't in the eval harness.**
+
+## Running the scanner
+
+```bash
+python3 -m venv .venv && ./.venv/bin/pip install -e '.[dev,pdf]'
+export ADASCAN_CONTACT="you@example.com"   # required — see docs/crawl-policy.md
+
+./.venv/bin/adascan crawl https://example.gov --out data/
+./.venv/bin/adascan triage --db data/adascan.db
+./.venv/bin/adascan report --db data/adascan.db --entity "Town of Example"
+```
+
+`ADASCAN_DRY_RUN=1` issues no requests and validates configuration only.
+Crawl behavior — rate limits, robots.txt, backoff, scope — is defined in
+[`docs/crawl-policy.md`](docs/crawl-policy.md) and enforced in `config.py`.
+
+**Not yet built:** the axe-core/Playwright pass over HTML pages. The scanner
+currently inventories pages and analyzes PDFs; the WCAG checks on the HTML side
+are the remaining half of Stage 0.
