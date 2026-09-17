@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.python-version
+
+# Node
+node_modules/
+.next/
+.vercel/
+dist/
+build/
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+
+# Data — never commit crawled government documents or scan output
+data/
+corpus/
+out/
+*.pdf
+!docs/**/*.pdf
+
+# OS / editor
+.DS_Store
+.idea/
+*.swp
